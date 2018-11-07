@@ -9,6 +9,11 @@ const Post = mongoose.model('Post', {
 	content: String
 });
 
+
+// initialize body-parser and add to app
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -20,10 +25,6 @@ app.set('view engine', 'handlebars');
 // ]
 
 //INDEX
-app.get('/posts', (req, res) => {
-	res.render('posts-index', {posts: posts})
-})
-
 app.get('/', (req, res) => {
 	Post.find()
 		.then(posts => {
@@ -34,6 +35,34 @@ app.get('/', (req, res) => {
 		})
 })
 
+app.get('/posts', (req, res) => {
+	res.render('posts-index', {posts: posts})
+})
+
+app.get('/posts/new', (req, res) => {
+	res.render('posts-new', {});
+})
+
+// create
+app.post('/posts', (req, res) => {
+	    // we use the method create() to create the review
+	    Post.create(req.body).then((post) => {
+	        console.log(post);
+	        // then we redirect to reviews/:id
+	        res.redirect(`/posts/${post._id}`);
+	    }).catch((err) => {
+	        console.log(err.message);
+	    })
+	})
+
+app.get('/posts/:id', (req, res) => {
+	Post.findById(req.params.id).then((post) => {
+		res.render('posts-show', { post: post })
+	}).catch((err) => {
+		console.log(err.message);
+	})
+})
+
 app.listen(3000, () => {
 	console.log('App listening on port 3000!')
-})
+});

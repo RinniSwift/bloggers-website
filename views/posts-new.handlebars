@@ -1,0 +1,25 @@
+<!-- views/posts-new.handlebars -->
+
+<form method="POST" action="/posts">
+	<fieldset>
+		<legend>New Post</legend>
+
+		<!-- Title -->
+		<p>
+			<label for="title">Title</label><br>
+			<input id="title" type="text" name="title" />
+		</p>
+
+		<p>
+			<label for="content">Blog Content</label><br>
+			<textarea id="content" name="content" rows="20" /> </textarea>
+		</p>
+	</fieldset>
+
+
+	<!-- Button -->
+	<p>
+		<button type="submit">Save</button>
+	</p>
+
+</form>
