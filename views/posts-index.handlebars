@@ -1,11 +1,14 @@
 <!-- views/posts-index.handlebars -->
 
 
-<h1>Posts</h1>
+<h1>Blog Post</h1>
 
-<a href="/posts/new">New Post</a>
+<div class="row">
+	{{#each posts}}
+		<div class="col-sm-3">
+			<h2><a href="/posts/{{this._id}}">{{this.title}}</a></h2>
+  			<small>{{this.content}}</small>
+  		</div>
+	{{/each}}
+</div>
 
-{{#each posts}}
-  <h2><a href="/posts/{{this._id}}">{{this.title}}</a></h2>
-  <small>{{this.content}}</small>
-{{/each}}

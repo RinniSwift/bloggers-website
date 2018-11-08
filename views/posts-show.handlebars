@@ -1,12 +1,15 @@
 
-<a href="/">Back</a>
+<a href="/">Back to Home</a>
 
-<h1>{{post.title}}</h1>
-<h2>{{post.content}}</h2>
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<h1>{{post.title}}</h1>
+		<h2>{{post.content}}</h2>
+		<p><a href="/posts/{{post._id}}/edit">Edit</a></p>
 
-<p><a href="/posts/{{post._id}}/edit">Edit</a></p>
-
-<!-- Delete Button -->
-<p><form method="POST" action="/posts/{{post._id}}?_method=DELETE">
-	<button type="submit">Delete</button>
-</form></p> 
+		<!-- Delete Button -->
+		<p><form method="POST" action="/posts/{{post._id}}?_method=DELETE">
+			<button type="submit">Delete</button>
+		</form></p>
+	</div>
+</div>

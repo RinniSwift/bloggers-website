@@ -1,12 +1,13 @@
 <!-- views/posts-new.handlebars -->
 
-<form method="POST" action="/posts">
-	{{> posts-form}}
-
-
-	<!-- Button -->
-	<p>
-		<button type="submit">Save</button>
-	</p>
-
-</form>
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form method="POST" action="/posts">
+			{{> posts-form}}
+			<!-- Button -->
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Save Blog</button>
+			</div>
+		</form>
+	</div>
+</div>
