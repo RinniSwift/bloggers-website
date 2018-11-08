@@ -5,7 +5,9 @@ const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/contractor-project');
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/contractor-project', {
+	useNewUrlParser: true
+});
 
 const Post = require('./models/post');
 
