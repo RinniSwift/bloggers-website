@@ -5,7 +5,7 @@ const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/contractor-project');
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/contractor-project');
 
 const Post = require('./models/post');
 
@@ -91,6 +91,5 @@ app.delete('/posts/:id', function (req, res){
 	})
 })
 
-app.listen(3000, () => {
-	console.log('App listening on port 3000!')
-});
+const port = process.env.PORT || 3000;
+app.listen(port)
