@@ -1,0 +1,18 @@
+<!-- views/partials/posts-form.handlebars -->
+
+<fieldset>
+	<legend>Edit</legend>
+
+	<!-- Title --> 
+	<p>
+		<label for="post-title">Title</label><br>
+		<input id="post-title" type="text" name="title" value="{{post.title}}" />
+	</p>
+
+	<!-- Content -->
+	<p>
+		<label for="post-content">Content</label><br>
+		<textarea id="post-content" name="content" rows="20" />{{post.content}}</textarea>
+	</p>
+</fieldset>
+

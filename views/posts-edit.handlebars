@@ -1,0 +1,10 @@
+<!-- views/posts-edit.handlebars -->
+
+<form method="POST" action="/posts/{{post._id}}?_method=PUT">
+	{{> posts-form}}
+
+	<!-- Button --> 
+	<p>
+		<button type="submit">Save</button>
+	</p>
+</form>

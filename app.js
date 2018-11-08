@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/contractor-project');
 
@@ -43,6 +46,12 @@ app.get('/posts/new', (req, res) => {
 	res.render('posts-new', {});
 })
 
+app.get('/posts/:id/edit', (req, res) => {
+	Post.findById(req.params.id, function(err, post) {
+		res.render('posts-edit', {post : post});
+	})
+})
+
 // create
 app.post('/posts', (req, res) => {
 	    // we use the method create() to create the review
@@ -61,6 +70,17 @@ app.get('/posts/:id', (req, res) => {
 	}).catch((err) => {
 		console.log(err.message);
 	})
+})
+
+// UPDATE
+app.put('/posts/:id', (req, res) => {
+	Post.findByIdAndUpdate(req.params.id, req.body)
+		.then(post => {
+			res.redirect(`/posts/${post._id}`)
+		})
+		.catch(err => {
+			console.log(err.message)
+		})
 })
 
 app.listen(3000, () => {
