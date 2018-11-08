@@ -7,10 +7,9 @@ app.use(methodOverride('_method'))
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/contractor-project');
 
-const Post = mongoose.model('Post', {
-	title: String,
-	content: String
-});
+const Post = require('./models/post');
+
+const posts = require('./controllers/posts')(app, Post);
 
 
 // initialize body-parser and add to app
