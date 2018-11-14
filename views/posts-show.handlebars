@@ -11,5 +11,11 @@
 		<p><form method="POST" action="/posts/{{post._id}}?_method=DELETE">
 			<button type="submit">Delete</button>
 		</form></p>
+
+		{{> comment-form}}
+
+		{{#each comments}}
+			{{> comment}}
+		{{/each}}
 	</div>
 </div>
